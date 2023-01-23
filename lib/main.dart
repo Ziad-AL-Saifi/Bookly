@@ -1,7 +1,7 @@
 import 'package:book_app/constant.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'featuers/Splash/presentation/view/splash_view.dart';
 
@@ -16,10 +16,10 @@ class BookApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-
       theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor:
-              kPrimaryColor), //  .copyWith(scaffoldBackgroundColor: kPrimaryColor),
+          textTheme:
+              GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+          scaffoldBackgroundColor: kPrimaryColor),
       home: const SplashView(),
     );
   }
