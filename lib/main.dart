@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-import 'featuers/Splash/splash_view.dart';
+import 'featuers/Splash/presentation/view/splash_view.dart';
 
 void main() {
   runApp(const BookApp());

@@ -1,6 +1,10 @@
 import 'package:book_app/core/utils/assets.dart';
+import 'package:book_app/featuers/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/diagnostics.dart';
+import 'package:get/get.dart';
+
+import '../../../../constant.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -17,16 +21,9 @@ class _SplashViewState extends State<SplashView>
   @override
   initState() {
     super.initState();
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
+    animationLogo();
 
-    ziadFirstAnimation =
-        Tween<Offset>(begin: const Offset(0, 15), end: Offset.zero)
-            .animate(animationController);
-
-    animationController.forward();
+    transition();
   }
 
   @override
@@ -48,6 +45,35 @@ class _SplashViewState extends State<SplashView>
                   child: const Text('Read free book'));
             })
       ]),
+    );
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  void animationLogo() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+
+    ziadFirstAnimation =
+        Tween<Offset>(begin: const Offset(0, 15), end: Offset.zero)
+            .animate(animationController);
+
+    animationController.forward();
+  }
+
+  void transition() {
+    Future.delayed(
+      const Duration(seconds: 5),
+      () {
+        Get.off(const HomeView(),
+            transition: Transition.downToUp, duration: kTransetionDuration);
+      },
     );
   }
 }
