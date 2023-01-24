@@ -1,6 +1,8 @@
 import 'package:book_app/constant.dart';
+import 'package:book_app/core/utils/router.dart';
+import 'package:book_app/featuers/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'featuers/Splash/presentation/view/splash_view.dart';
@@ -14,13 +16,13 @@ class BookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
+      routerConfig: RouterViews.route,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
           textTheme:
               GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
           scaffoldBackgroundColor: kPrimaryColor),
-      home: const SplashView(),
     );
   }
 }

@@ -1,8 +1,9 @@
 import 'package:book_app/core/utils/assets.dart';
+import 'package:book_app/core/utils/router.dart';
 import 'package:book_app/featuers/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/diagnostics.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../constant.dart';
 
@@ -71,8 +72,7 @@ class _SplashViewState extends State<SplashView>
     Future.delayed(
       const Duration(seconds: 5),
       () {
-        Get.off(const HomeView(),
-            transition: Transition.downToUp, duration: kTransetionDuration);
+        GoRouter.of(context).pushReplacement(RouterViews.homeViewRouter);
       },
     );
   }
