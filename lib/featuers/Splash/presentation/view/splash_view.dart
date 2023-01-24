@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../constant.dart';
+import '../../../../core/utils/constant.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
