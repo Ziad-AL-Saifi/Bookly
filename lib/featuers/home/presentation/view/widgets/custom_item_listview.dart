@@ -6,17 +6,21 @@ class ListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .25,
-      child: ListView.builder(
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.only(right: 18),
-            child: CustomListViewItem(),
-          );
-        },
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, top: 37),
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * .25,
+        child: ListView.builder(
+          padding: EdgeInsets.zero,
+          itemCount: 10,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return const Padding(
+              padding: EdgeInsets.only(right: 18),
+              child: CustomListViewItem(),
+            );
+          },
+        ),
       ),
     );
   }
