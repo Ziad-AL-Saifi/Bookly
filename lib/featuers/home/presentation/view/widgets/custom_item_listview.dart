@@ -35,10 +35,10 @@ class CustomListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: AspectRatio(
-        aspectRatio: 2.81 / 4,
+        aspectRatio: 2.1 / 3,
         child: Container(
             decoration: BoxDecoration(
-                color: Colors.red, borderRadius: BorderRadius.circular(16)),
+                color: Colors.red, borderRadius: BorderRadius.circular(10)),
             child: Image.asset('assets/images/Book 1 Hightligh.png')),
       ),
     );

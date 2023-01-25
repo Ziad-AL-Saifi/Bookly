@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'custom_app_bar_book_details.dart';
 import 'custom_item_listview.dart';
+import 'payment_or_free_button.dart';
 
 class DetailsViewBody extends StatelessWidget {
   const DetailsViewBody({super.key});
@@ -28,43 +29,48 @@ class DetailsViewBody extends StatelessWidget {
         const SizedBox(
           height: 37,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 150,
-              height: 48,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      bottomLeft: Radius.circular(50))),
-              child: const Center(
-                  child: Text(
-                r'99.88 $',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              )),
-            ),
-            Container(
-              width: 150,
-              height: 48,
-              decoration: const BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
-              child: const Center(
-                  child: Text(
-                'Free preview',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              )),
-            ),
-          ],
-        )
+        const PaymentOrFreeButton(),
+        const Expanded(child: SizedBox(height: 49)),
+        const ListOfBooksInDetailsView(),
+        const SizedBox(height: 40)
       ],
     ));
+  }
+}
+
+class ListOfBooksInDetailsView extends StatelessWidget {
+  const ListOfBooksInDetailsView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "You can also like",
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .15,
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.only(right: 10),
+                  child: CustomListViewItem(),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
