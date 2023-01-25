@@ -56,13 +56,13 @@ class BestSellerListViewItem extends StatelessWidget {
                   height: 3,
                 ),
                 Row(
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       r"19.99 $",
                     ),
-                    Spacer(),
+                    const Spacer(),
                     rateWidget()
                   ],
                 )
@@ -76,13 +76,13 @@ class BestSellerListViewItem extends StatelessWidget {
 }
 
 class rateWidget extends StatelessWidget {
-  const rateWidget({
-    Key? key,
-  }) : super(key: key);
-
+  rateWidget({Key? key, this.mainAxisAlignment = MainAxisAlignment.center})
+      : super(key: key);
+  MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: mainAxisAlignment,
       children: const [
         Icon(
           Icons.star,
@@ -99,11 +99,13 @@ class rateWidget extends StatelessWidget {
         SizedBox(
           width: 5,
         ),
-        Text(
-          '(2390)',
-          style: TextStyle(
-            color: Color(0xff707070),
-            fontSize: 14,
+        Opacity(
+          opacity: .6,
+          child: Text(
+            '(2390)',
+            style: TextStyle(
+              fontSize: 14,
+            ),
           ),
         ),
       ],
