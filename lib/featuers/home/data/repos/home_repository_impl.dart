@@ -31,7 +31,9 @@ class RepoHomeImpl implements Repo {
         dataModel.add(doc);
       }
     } catch (e) {
-      left(ServerFeiluer(masserErorr: e.toString()));
+      if (e is DioError) {
+        left(ServerFeiluer.fromErrorDio(e));
+      }
     }
     return right(dataModel);
   }
@@ -46,7 +48,9 @@ class RepoHomeImpl implements Repo {
         dataModel.add(doc);
       }
     } catch (e) {
-      left(ServerFeiluer(masserErorr: e.toString()));
+      if (e is DioError) {
+        left(ServerFeiluer.fromErrorDio(e));
+      }
     }
     return right(dataModel);
   }
