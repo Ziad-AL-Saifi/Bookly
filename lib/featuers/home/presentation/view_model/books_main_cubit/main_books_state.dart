@@ -13,15 +13,15 @@ class MainBooksInitial extends MainBooksState {}
 class MainBooksLoading extends MainBooksState {}
 
 class MainBooksField extends MainBooksState {
-  String errorMess;
-  MainBooksField({
+  final String errorMess;
+  const MainBooksField({
     required this.errorMess,
   });
 }
 
 class MainBooksSuccess extends MainBooksState {
-  List<BookModel> data;
-  MainBooksSuccess({
+  final List<BookModel> data;
+  const MainBooksSuccess({
     required this.data,
   });
 }
