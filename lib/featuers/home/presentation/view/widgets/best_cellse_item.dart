@@ -1,5 +1,6 @@
 import 'package:book_app/core/utils/router.dart';
 import 'package:book_app/featuers/home/data/model/book_model/book_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,13 +24,11 @@ class BestSellerListViewItem extends StatelessWidget {
             height: 125,
             child: AspectRatio(
               aspectRatio: 2.81 / 4,
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(16)),
-                  child: Image.network(
-                      fit: BoxFit.cover,
-                      data.volumeInfo!.imageLinks!.thumbnail!)),
+              child: CachedNetworkImage(
+                imageUrl: data.volumeInfo!.imageLinks!.thumbnail!,
+                fit: BoxFit.fill,
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
             ),
           ),
           const SizedBox(width: 30),
