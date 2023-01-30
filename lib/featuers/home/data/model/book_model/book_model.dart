@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 import 'access_info.dart';
@@ -26,41 +28,47 @@ class BookModel extends Equatable {
     this.searchInfo,
   });
 
-  factory BookModel.fromGetDataFromJson(Map<String, dynamic> json) {
-    return BookModel(
-      kind: json['kind'] as String?,
-      id: json['id'] as String?,
-      etag: json['etag'] as String?,
-      selfLink: json['selfLink'] as String?,
-      volumeInfo: json['volumeInfo'] == null
-          ? null
-          : VolumeInfo.fromGetDataFromJson(
-              json['volumeInfo'] as Map<String, dynamic>),
-      saleInfo: json['saleInfo'] == null
-          ? null
-          : SaleInfo.fromGetDataFromJson(
-              json['saleInfo'] as Map<String, dynamic>),
-      accessInfo: json['accessInfo'] == null
-          ? null
-          : AccessInfo.fromGetDataFromJson(
-              json['accessInfo'] as Map<String, dynamic>),
-      searchInfo: json['searchInfo'] == null
-          ? null
-          : SearchInfo.fromGetDataFromJson(
-              json['searchInfo'] as Map<String, dynamic>),
-    );
-  }
+  factory BookModel.fromMap(Map<String, dynamic> data) => BookModel(
+        kind: data['kind'] as String?,
+        id: data['id'] as String?,
+        etag: data['etag'] as String?,
+        selfLink: data['selfLink'] as String?,
+        volumeInfo: data['volumeInfo'] == null
+            ? null
+            : VolumeInfo.fromMap(data['volumeInfo'] as Map<String, dynamic>),
+        saleInfo: data['saleInfo'] == null
+            ? null
+            : SaleInfo.fromMap(data['saleInfo'] as Map<String, dynamic>),
+        accessInfo: data['accessInfo'] == null
+            ? null
+            : AccessInfo.fromMap(data['accessInfo'] as Map<String, dynamic>),
+        searchInfo: data['searchInfo'] == null
+            ? null
+            : SearchInfo.fromMap(data['searchInfo'] as Map<String, dynamic>),
+      );
 
-  Map<String, dynamic> toGetDataFromJson() => {
+  Map<String, dynamic> toMap() => {
         'kind': kind,
         'id': id,
         'etag': etag,
         'selfLink': selfLink,
-        'volumeInfo': volumeInfo?.toGetDataFromJson(),
-        'saleInfo': saleInfo?.toGetDataFromJson(),
-        'accessInfo': accessInfo?.toGetDataFromJson(),
-        'searchInfo': searchInfo?.toGetDataFromJson(),
+        'volumeInfo': volumeInfo?.toMap(),
+        'saleInfo': saleInfo?.toMap(),
+        'accessInfo': accessInfo?.toMap(),
+        'searchInfo': searchInfo?.toMap(),
       };
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [BookModel].
+  factory BookModel.fromJson(String data) {
+    return BookModel.fromMap(json.decode(data) as Map<String, dynamic>);
+  }
+
+  /// `dart:convert`
+  ///
+  /// Converts [BookModel] to a JSON string.
+  String toJson() => json.encode(toMap());
 
   @override
   List<Object?> get props {

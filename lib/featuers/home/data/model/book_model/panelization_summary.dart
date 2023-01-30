@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 class PanelizationSummary extends Equatable {
@@ -9,17 +11,30 @@ class PanelizationSummary extends Equatable {
     this.containsImageBubbles,
   });
 
-  factory PanelizationSummary.fromGetDataFromJson(Map<String, dynamic> json) {
+  factory PanelizationSummary.fromMap(Map<String, dynamic> data) {
     return PanelizationSummary(
-      containsEpubBubbles: json['containsEpubBubbles'] as bool?,
-      containsImageBubbles: json['containsImageBubbles'] as bool?,
+      containsEpubBubbles: data['containsEpubBubbles'] as bool?,
+      containsImageBubbles: data['containsImageBubbles'] as bool?,
     );
   }
 
-  Map<String, dynamic> toGetDataFromJson() => {
+  Map<String, dynamic> toMap() => {
         'containsEpubBubbles': containsEpubBubbles,
         'containsImageBubbles': containsImageBubbles,
       };
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [PanelizationSummary].
+  factory PanelizationSummary.fromJson(String data) {
+    return PanelizationSummary.fromMap(
+        json.decode(data) as Map<String, dynamic>);
+  }
+
+  /// `dart:convert`
+  ///
+  /// Converts [PanelizationSummary] to a JSON string.
+  String toJson() => json.encode(toMap());
 
   @override
   List<Object?> get props => [containsEpubBubbles, containsImageBubbles];

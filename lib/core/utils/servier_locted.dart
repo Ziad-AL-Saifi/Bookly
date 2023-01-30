@@ -9,5 +9,5 @@ var getIt = GetIt.instance;
 
 void setup() {
   getIt.registerSingleton<Api>(Api(dio: Dio()));
-  getIt.registerSingleton<RepoHomeImpl>(RepoHomeImpl(api: getIt.get<Api>()));
+  getIt.registerSingleton<RepoHomeImpl>(RepoHomeImpl(api: Api(dio: Dio())));
 }

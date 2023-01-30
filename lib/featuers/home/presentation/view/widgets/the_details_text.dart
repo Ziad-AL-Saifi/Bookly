@@ -1,3 +1,4 @@
+import 'package:book_app/featuers/home/data/model/book_model/book_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'best_cellse_item.dart';
@@ -25,6 +26,7 @@ class TheDetailsTextComponant extends StatelessWidget {
           height: 14,
         ),
         rateWidget(
+          data: BookModel(),
           mainAxisAlignment: MainAxisAlignment.center,
         ),
       ],

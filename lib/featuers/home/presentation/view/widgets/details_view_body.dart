@@ -20,7 +20,9 @@ class DetailsViewBody extends StatelessWidget {
         Padding(
           padding:
               EdgeInsets.only(left: wM * .25, right: wM * .25, top: hM * .03),
-          child: const CustomListViewItem(),
+          child: CustomListViewItem(
+              image:
+                  'https://cdn.pixabay.com/photo/2018/04/26/16/39/beach-3352363_960_720.jpg'),
         ),
         const SizedBox(
           height: 40,
@@ -52,7 +54,7 @@ class ListOfBooksInDetailsView extends StatelessWidget {
             "You can also like",
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           SizedBox(
@@ -62,10 +64,11 @@ class ListOfBooksInDetailsView extends StatelessWidget {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(right: 10),
-                  child: CustomListViewItem(),
-                );
+                return Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: CustomListViewItem(
+                        image:
+                            "https://cdn.pixabay.com/photo/2018/04/26/16/39/beach-3352363_960_720.jpg"));
               },
             ),
           ),

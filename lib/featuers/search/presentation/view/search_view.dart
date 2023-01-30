@@ -1,3 +1,4 @@
+import 'package:book_app/featuers/home/data/model/book_model/book_model.dart';
 import 'package:book_app/featuers/search/presentation/view/widget/custom_text_field_for_search.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,9 @@ class ListOfBooksInSearchView extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const BestSellerListViewItem();
+          return BestSellerListViewItem(
+            data: BookModel(),
+          );
         },
       ),
     );
