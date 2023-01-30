@@ -9,7 +9,7 @@ import 'home_repository.dart';
 
 class RepoHomeImpl implements Repo {
   Api api;
-  List<BookModel>? dataModel;
+  List<BookModel> dataModel = [];
 
   RepoHomeImpl({
     required this.api,
@@ -23,14 +23,14 @@ class RepoHomeImpl implements Repo {
           endPoint:
               '?q=subject:Programming&Filtering=free-ebooks&Projection=full&Download=epub');
       for (var doc in data['item']) {
-        dataModel!.add(doc);
+        dataModel.add(doc);
       }
     } catch (e) {
       if (e is DioError) {
         left(ServerFeiluer.fromErrorDio(e));
       }
     }
-    return right(dataModel!);
+    return right(dataModel);
   }
 
   @override

@@ -13,7 +13,7 @@ class BestSellerCubit extends Cubit<BestSellerState> {
     required this.repo,
   }) : super(BestSellerInitial());
 
-  Future<void> getMainBooksCubit() async {
+  Future<void> getBestBooksCubit() async {
     emit(BestSellerLoading());
     var data = await repo.fetchBestSellerBooksInHomePage();
     data.fold((l) => emit(BestSellerField(errorMess: l.masserErorr)),
