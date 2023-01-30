@@ -8,9 +8,9 @@ part 'main_books_state.dart';
 
 class MainBooksCubit extends Cubit<MainBooksState> {
   Repo repo;
-  MainBooksCubit(
-    this.repo,
-  ) : super(MainBooksInitial());
+  MainBooksCubit({
+    required this.repo,
+  }) : super(MainBooksInitial());
 
   Future<void> getMainBooksCubit() async {
     emit(MainBooksLoading());

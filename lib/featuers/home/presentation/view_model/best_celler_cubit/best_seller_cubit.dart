@@ -9,9 +9,9 @@ part 'best_seller_state.dart';
 
 class BestSellerCubit extends Cubit<BestSellerState> {
   Repo repo;
-  BestSellerCubit(
-    this.repo,
-  ) : super(BestSellerInitial());
+  BestSellerCubit({
+    required this.repo,
+  }) : super(BestSellerInitial());
 
   Future<void> getMainBooksCubit() async {
     emit(BestSellerLoading());

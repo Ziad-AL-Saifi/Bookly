@@ -11,9 +11,9 @@ class RepoHomeImpl implements Repo {
   Api api;
   List<BookModel>? dataModel;
 
-  RepoHomeImpl(
-    this.api,
-  );
+  RepoHomeImpl({
+    required this.api,
+  });
 
   @override
   Future<Either<Feiluer, List<BookModel>>>
