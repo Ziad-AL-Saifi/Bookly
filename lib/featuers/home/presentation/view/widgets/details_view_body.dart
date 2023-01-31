@@ -1,14 +1,18 @@
+import 'package:book_app/core/utils/public_widget/loading_end.dart';
+import 'package:book_app/featuers/home/data/model/book_model/book_model.dart';
 import 'package:book_app/featuers/home/presentation/view/widgets/best_cellse_item.dart';
 import 'package:book_app/featuers/home/presentation/view/widgets/the_details_text.dart';
+import 'package:book_app/featuers/home/presentation/view_model/smiller_book_cubit/smiller_book_cubit.dart';
+import 'package:book_app/main.dart';
 import 'package:flutter/material.dart';
-
 import 'custom_app_bar_book_details.dart';
 import 'custom_item_listview.dart';
+import 'list_Details_view.dart';
 import 'payment_or_free_button.dart';
 
 class DetailsViewBody extends StatelessWidget {
-  const DetailsViewBody({super.key});
-
+  const DetailsViewBody({super.key, required this.data});
+  final BookModel data;
   @override
   Widget build(BuildContext context) {
     var wM = MediaQuery.of(context).size.width;
@@ -21,59 +25,23 @@ class DetailsViewBody extends StatelessWidget {
           padding:
               EdgeInsets.only(left: wM * .25, right: wM * .25, top: hM * .03),
           child: CustomListViewItem(
-              image:
-                  'https://cdn.pixabay.com/photo/2018/04/26/16/39/beach-3352363_960_720.jpg'),
+            image: data.volumeInfo!.imageLinks!.thumbnail == null
+                ? ''
+                : data.volumeInfo!.imageLinks!.thumbnail!,
+          ),
         ),
         const SizedBox(
           height: 40,
         ),
-        const TheDetailsTextComponant(),
+        TheDetailsTextComponant(data: data),
         const SizedBox(
           height: 37,
         ),
         const PaymentOrFreeButton(),
         const Expanded(child: SizedBox(height: 49)),
         const ListOfBooksInDetailsView(),
-        const SizedBox(height: 40)
+        Expanded(child: const SizedBox(height: 40))
       ],
     ));
-  }
-}
-
-class ListOfBooksInDetailsView extends StatelessWidget {
-  const ListOfBooksInDetailsView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "You can also like",
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .15,
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: CustomListViewItem(
-                        image:
-                            "https://cdn.pixabay.com/photo/2018/04/26/16/39/beach-3352363_960_720.jpg"));
-              },
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }

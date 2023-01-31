@@ -7,6 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:book_app/core/utils/public_widget/loading_end.dart';
 import 'package:book_app/featuers/home/presentation/view_model/books_main_cubit/main_books_cubit.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../core/utils/router.dart';
 
 class ListViewItem extends StatelessWidget {
   const ListViewItem({super.key});
@@ -28,9 +31,15 @@ class ListViewItem extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 18),
-                    child: CustomListViewItem(
-                        image: state
-                            .data[index].volumeInfo!.imageLinks!.thumbnail!),
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(RouterViews.detailsViewRout,
+                            extra: state.data[index]);
+                      },
+                      child: CustomListViewItem(
+                          image: state
+                              .data[index].volumeInfo!.imageLinks!.thumbnail!),
+                    ),
                   );
                 },
               ),

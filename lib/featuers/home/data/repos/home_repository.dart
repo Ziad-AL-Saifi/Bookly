@@ -7,4 +7,6 @@ import '../model/book_model/book_model.dart';
 abstract class Repo {
   Future<Either<Feiluer, List<BookModel>>> fetchMainBooksInHomePage();
   Future<Either<Feiluer, List<BookModel>>> fetchBestSellerBooksInHomePage();
+  Future<Either<Feiluer, List<BookModel>>> fetchSmillerBook(
+      {required String categuary});
 }

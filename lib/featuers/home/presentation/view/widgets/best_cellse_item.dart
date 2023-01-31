@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
-  BookModel data;
-  BestSellerListViewItem({
+  final BookModel data;
+  const BestSellerListViewItem({
     required this.data,
     Key? key,
   }) : super(key: key);
@@ -17,7 +17,7 @@ class BestSellerListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(RouterViews.detailsViewRout);
+          GoRouter.of(context).push(RouterViews.detailsViewRout, extra: data);
         },
         child: Row(children: [
           SizedBox(
@@ -106,7 +106,7 @@ class rateWidget extends StatelessWidget {
           width: 6.3,
         ),
         Text(
-          data.volumeInfo!.averageRating == null
+          data.volumeInfo?.averageRating == null
               ? '0'
               : data.volumeInfo!.averageRating.toString(),
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -117,7 +117,7 @@ class rateWidget extends StatelessWidget {
         Opacity(
           opacity: .6,
           child: Text(
-            data.volumeInfo!.ratingsCount == null
+            data.volumeInfo?.ratingsCount == null
                 ? '(0)'
                 : '(${data.volumeInfo!.ratingsCount!.toString()})',
             style: const TextStyle(

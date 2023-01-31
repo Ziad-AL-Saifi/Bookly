@@ -27,7 +27,6 @@ class RepoHomeImpl implements Repo {
     for (var d in data['items']) {
       dataModel.add(BookModel.fromMap(d));
     }
-    print(dataModel);
     return right(dataModel);
   }
 
@@ -42,7 +41,21 @@ class RepoHomeImpl implements Repo {
     for (var d in data['items']) {
       dataModel.add(BookModel.fromMap(d));
     }
-    print(dataModel);
+    return right(dataModel);
+  }
+
+  @override
+  Future<Either<Feiluer, List<BookModel>>> fetchSmillerBook(
+      {required String categuary}) async {
+    http.Response response = await http.get(
+        Uri.parse('https://www.googleapis.com/books/v1/volumes?q=$categuary'));
+
+    Map<String, dynamic> data = jsonDecode(response.body);
+
+    List<BookModel> dataModel = [];
+    for (var d in data['items']) {
+      dataModel.add(BookModel.fromMap(d));
+    }
     return right(dataModel);
   }
 }
