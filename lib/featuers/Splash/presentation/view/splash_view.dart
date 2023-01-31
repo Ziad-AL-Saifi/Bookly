@@ -1,11 +1,7 @@
 import 'package:book_app/core/utils/assets.dart';
 import 'package:book_app/core/utils/router.dart';
-import 'package:book_app/featuers/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../core/utils/constant.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

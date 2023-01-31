@@ -27,7 +27,7 @@ class BestSellerListViewItem extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: data.volumeInfo!.imageLinks!.thumbnail!,
                 fit: BoxFit.fill,
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ),
@@ -41,7 +41,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     data.volumeInfo!.title!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
@@ -70,7 +70,7 @@ class BestSellerListViewItem extends StatelessWidget {
                       r"19.99 $",
                     ),
                     const Spacer(),
-                    rateWidget(
+                    RateWidget(
                       data: data,
                     )
                   ],
@@ -84,14 +84,14 @@ class BestSellerListViewItem extends StatelessWidget {
   }
 }
 
-class rateWidget extends StatelessWidget {
-  BookModel data;
-  rateWidget(
+class RateWidget extends StatelessWidget {
+  final BookModel data;
+  const RateWidget(
       {Key? key,
       required this.data,
       this.mainAxisAlignment = MainAxisAlignment.center})
       : super(key: key);
-  MainAxisAlignment mainAxisAlignment;
+  final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -109,7 +109,7 @@ class rateWidget extends StatelessWidget {
           data.volumeInfo?.averageRating == null
               ? '0'
               : data.volumeInfo!.averageRating.toString(),
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           width: 5,

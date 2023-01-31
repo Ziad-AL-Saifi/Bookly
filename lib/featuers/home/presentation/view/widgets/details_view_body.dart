@@ -1,13 +1,9 @@
-import 'package:book_app/core/utils/public_widget/loading_end.dart';
 import 'package:book_app/featuers/home/data/model/book_model/book_model.dart';
-import 'package:book_app/featuers/home/presentation/view/widgets/best_cellse_item.dart';
 import 'package:book_app/featuers/home/presentation/view/widgets/the_details_text.dart';
-import 'package:book_app/featuers/home/presentation/view_model/smiller_book_cubit/smiller_book_cubit.dart';
-import 'package:book_app/main.dart';
 import 'package:flutter/material.dart';
 import 'custom_app_bar_book_details.dart';
 import 'custom_item_listview.dart';
-import 'list_Details_view.dart';
+import 'list_details_views.dart';
 import 'payment_or_free_button.dart';
 
 class DetailsViewBody extends StatelessWidget {
@@ -40,7 +36,7 @@ class DetailsViewBody extends StatelessWidget {
         const PaymentOrFreeButton(),
         const Expanded(child: SizedBox(height: 49)),
         const ListOfBooksInDetailsView(),
-        Expanded(child: const SizedBox(height: 40))
+        const Expanded(child: SizedBox(height: 40))
       ],
     ));
   }

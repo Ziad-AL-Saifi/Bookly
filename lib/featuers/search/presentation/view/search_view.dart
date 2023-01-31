@@ -42,7 +42,7 @@ class ListOfBooksInSearchView extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return BestSellerListViewItem(
+          return const BestSellerListViewItem(
             data: BookModel(),
           );
         },

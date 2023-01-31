@@ -1,7 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:book_app/featuers/home/data/model/book_model/image_links.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,8 +56,8 @@ class ListViewItem extends StatelessWidget {
 }
 
 class CustomListViewItem extends StatelessWidget {
-  String image;
-  CustomListViewItem({
+  final String image;
+  const CustomListViewItem({
     Key? key,
     required this.image,
   }) : super(key: key);

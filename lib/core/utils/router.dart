@@ -4,7 +4,6 @@ import 'package:book_app/featuers/home/data/repos/home_repository_impl.dart';
 import 'package:book_app/featuers/home/presentation/view/details_best_celler_view.dart';
 import 'package:book_app/featuers/home/presentation/view_model/smiller_book_cubit/smiller_book_cubit.dart';
 import 'package:book_app/featuers/search/presentation/view/search_view.dart';
-import 'package:book_app/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 

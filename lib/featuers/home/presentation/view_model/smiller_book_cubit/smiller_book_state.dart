@@ -2,7 +2,7 @@
 part of 'smiller_book_cubit.dart';
 
 abstract class SmillerBookState extends Equatable {
-  SmillerBookState();
+  const SmillerBookState();
 
   @override
   List<Object> get props => [];
@@ -14,12 +14,12 @@ class SmillerBookLoading extends SmillerBookState {}
 
 class SmillerBookFaild extends SmillerBookState {
   final String errorMas;
-  SmillerBookFaild({required this.errorMas});
+  const SmillerBookFaild({required this.errorMas});
 }
 
 class SmillerBookSuccessful extends SmillerBookState {
   final List<BookModel> data;
-  SmillerBookSuccessful({
+  const SmillerBookSuccessful({
     required this.data,
   });
 }

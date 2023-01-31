@@ -13,20 +13,20 @@ class TheDetailsTextComponant extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text((data.volumeInfo!.title) ?? 'Unknown',
-            style: TextStyle(fontSize: 30), textAlign: TextAlign.center),
+            style: const TextStyle(fontSize: 30), textAlign: TextAlign.center),
         const SizedBox(
           height: 8,
         ),
         Text(
           data.volumeInfo!.authors?[0] ?? 'Unknown',
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 18, color: Color.fromARGB(255, 128, 128, 136)),
           textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 14,
         ),
-        rateWidget(
+        RateWidget(
           data: data,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
