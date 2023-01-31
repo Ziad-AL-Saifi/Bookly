@@ -18,13 +18,10 @@ class RepoHomeImpl implements Repo {
   @override
   Future<Either<Feiluer, List<BookModel>>>
       fetchBestSellerBooksInHomePage() async {
-    http.Response response = await http
-        .get(Uri.parse('https://www.googleapis.com/books/v1/volumes?q=cook'));
-
-    Map<String, dynamic> data = jsonDecode(response.body);
+    var response = await api.get(endPoint: '?q=general');
 
     List<BookModel> dataModel = [];
-    for (var d in data['items']) {
+    for (var d in response['items']) {
       dataModel.add(BookModel.fromMap(d));
     }
     return right(dataModel);
@@ -32,13 +29,10 @@ class RepoHomeImpl implements Repo {
 
   @override
   Future<Either<Feiluer, List<BookModel>>> fetchMainBooksInHomePage() async {
-    http.Response response = await http.get(
-        Uri.parse('https://www.googleapis.com/books/v1/volumes?q=Programming'));
-
-    Map<String, dynamic> data = jsonDecode(response.body);
+    var response = await api.get(endPoint: '?q=general');
 
     List<BookModel> dataModel = [];
-    for (var d in data['items']) {
+    for (var d in response['items']) {
       dataModel.add(BookModel.fromMap(d));
     }
     return right(dataModel);
@@ -47,13 +41,10 @@ class RepoHomeImpl implements Repo {
   @override
   Future<Either<Feiluer, List<BookModel>>> fetchSmillerBook(
       {required String categuary}) async {
-    http.Response response = await http.get(
-        Uri.parse('https://www.googleapis.com/books/v1/volumes?q=$categuary'));
-
-    Map<String, dynamic> data = jsonDecode(response.body);
+    var response = await api.get(endPoint: '?q=$categuary');
 
     List<BookModel> dataModel = [];
-    for (var d in data['items']) {
+    for (var d in response['items']) {
       dataModel.add(BookModel.fromMap(d));
     }
     return right(dataModel);
