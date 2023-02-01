@@ -1,14 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
 
-class Feiluer {
+class Failuer {
   String masserErorr;
-  Feiluer({
+  Failuer({
     required this.masserErorr,
   });
 }
 
-class ServerFeiluer extends Feiluer {
+class ServerFeiluer extends Failuer {
   ServerFeiluer({required super.masserErorr});
 
   factory ServerFeiluer.fromErrorDio(DioError dioError) {

@@ -1,16 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class CustomTextFieldForSearch extends StatelessWidget {
   const CustomTextFieldForSearch({
     Key? key,
+    required this.onChange,
   }) : super(key: key);
-
+  final Function(String) onChange;
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: TextField(
-        decoration: InputDecoration(
+        onChanged: onChange,
+        decoration: const InputDecoration(
           hintText: 'Search Books',
           label: Text(
             'Search',

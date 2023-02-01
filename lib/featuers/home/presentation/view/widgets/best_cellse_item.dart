@@ -25,9 +25,12 @@ class BestSellerListViewItem extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 2.81 / 4,
               child: CachedNetworkImage(
-                imageUrl: data.volumeInfo!.imageLinks!.thumbnail!,
-                fit: BoxFit.fill,
+                imageUrl: data.volumeInfo!.imageLinks?.thumbnail == null
+                    ? 'https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781627783040/playing-without-a-partner-9781627783040_xlg.jpg'
+                    : data.volumeInfo!.imageLinks!.thumbnail!,
+                placeholder: (context, url) => const Icon(Icons.error),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
+                fit: BoxFit.fill,
               ),
             ),
           ),

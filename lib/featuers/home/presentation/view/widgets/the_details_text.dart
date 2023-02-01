@@ -12,8 +12,12 @@ class TheDetailsTextComponant extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text((data.volumeInfo!.title) ?? 'Unknown',
-            style: const TextStyle(fontSize: 30), textAlign: TextAlign.center),
+        SingleChildScrollView(
+          child: Text((data.volumeInfo!.title) ?? 'Unknown',
+              maxLines: 2,
+              style: const TextStyle(overflow: TextOverflow.fade, fontSize: 30),
+              textAlign: TextAlign.center),
+        ),
         const SizedBox(
           height: 8,
         ),

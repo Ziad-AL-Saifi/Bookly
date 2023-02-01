@@ -1,8 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:book_app/core/error/feilds.dart';
 import 'package:book_app/featuers/home/data/model/book_model/book_model.dart';
@@ -15,10 +12,22 @@ class RepoHomeImpl implements Repo {
   RepoHomeImpl({
     required this.api,
   });
+
   @override
-  Future<Either<Feiluer, List<BookModel>>>
+  Future<Either<Failuer, List<BookModel>>> fetchMainBooksInHomePage() async {
+    var response = await api.get(endPoint: '?q=all books');
+
+    List<BookModel> dataModel = [];
+    for (var d in response['items']) {
+      dataModel.add(BookModel.fromMap(d));
+    }
+    return right(dataModel);
+  }
+
+  @override
+  Future<Either<Failuer, List<BookModel>>>
       fetchBestSellerBooksInHomePage() async {
-    var response = await api.get(endPoint: '?q=general');
+    var response = await api.get(endPoint: '?q=random');
 
     List<BookModel> dataModel = [];
     for (var d in response['items']) {
@@ -28,18 +37,7 @@ class RepoHomeImpl implements Repo {
   }
 
   @override
-  Future<Either<Feiluer, List<BookModel>>> fetchMainBooksInHomePage() async {
-    var response = await api.get(endPoint: '?q=general');
-
-    List<BookModel> dataModel = [];
-    for (var d in response['items']) {
-      dataModel.add(BookModel.fromMap(d));
-    }
-    return right(dataModel);
-  }
-
-  @override
-  Future<Either<Feiluer, List<BookModel>>> fetchSmillerBook(
+  Future<Either<Failuer, List<BookModel>>> fetchSmillerBook(
       {required String categuary}) async {
     var response = await api.get(endPoint: '?q=$categuary');
 

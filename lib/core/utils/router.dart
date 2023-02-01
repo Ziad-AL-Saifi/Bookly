@@ -1,9 +1,13 @@
+import 'package:book_app/core/utils/api_services.dart';
 import 'package:book_app/core/utils/servier_locted.dart';
 import 'package:book_app/featuers/home/data/model/book_model/book_model.dart';
 import 'package:book_app/featuers/home/data/repos/home_repository_impl.dart';
 import 'package:book_app/featuers/home/presentation/view/details_best_celler_view.dart';
 import 'package:book_app/featuers/home/presentation/view_model/smiller_book_cubit/smiller_book_cubit.dart';
+import 'package:book_app/featuers/search/data/reop/search_repo_impl.dart';
 import 'package:book_app/featuers/search/presentation/view/search_view.dart';
+import 'package:book_app/featuers/search/presentation/view_model/cubit/search_cubit.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,7 +37,11 @@ abstract class RouterViews {
     ),
     GoRoute(
       path: searchViewRout,
-      builder: (context, state) => const SearchView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) =>
+            SearchCubit(searchRepoImp: SearchRepoImp(api: Api(dio: Dio()))),
+        child: const SearchView(),
+      ),
     )
   ]);
 }
