@@ -15,7 +15,7 @@ class TheDetailsTextComponant extends StatelessWidget {
         SingleChildScrollView(
           child: Text((data.volumeInfo!.title) ?? 'Unknown',
               maxLines: 2,
-              style: const TextStyle(overflow: TextOverflow.fade, fontSize: 30),
+              style: const TextStyle(overflow: TextOverflow.fade, fontSize: 25),
               textAlign: TextAlign.center),
         ),
         const SizedBox(

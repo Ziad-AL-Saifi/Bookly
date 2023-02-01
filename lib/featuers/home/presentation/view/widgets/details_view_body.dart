@@ -26,12 +26,16 @@ class DetailsViewBody extends StatelessWidget {
                 : data.volumeInfo!.imageLinks!.thumbnail!,
           ),
         ),
-        const SizedBox(
-          height: 40,
+        const Expanded(
+          child: SizedBox(
+            height: 40,
+          ),
         ),
         TheDetailsTextComponant(data: data),
-        const SizedBox(
-          height: 37,
+        const Expanded(
+          child: SizedBox(
+            height: 37,
+          ),
         ),
         const PaymentOrFreeButton(),
         const Expanded(child: SizedBox(height: 49)),
